@@ -15,13 +15,13 @@ int main() {
 	int j;
 	int counter = 0;
 	int vars = 1;
-	int jl;
+	bool jl = 0;
 
 	cout << "Enter number of stair: ";
 	cin >> n;
 	cout << "Change jump length (default 3)? Enter 1/0: ";
 	cin >> jl;
-	if (jl == 1) {
+	if (jl) {
 		cout << "Enter jump leight: ";
 		cin >> j;
 
