@@ -2,19 +2,24 @@
 
 using namespace std;
 
-int jump(int n, int& v, int& c,int j = 3) {
-	if (n == 1) return 1;
-	++c;
-	c < j ? v *= 2 : v = v * 2 - 1;
-	if (c < n - 1) return jump(n, v, c, j);
-	else return v;
+int jump(int n, int k = 3) {
+	if (k < pow(2, n) && n > k) {
+		n -= k;
+		k = pow(2, (k - 1));
+	}
+	else if (n <= k) {
+		return k = pow(2, (n-1));
+	}
+	k = k * 2 - 1;
+	--n;
+	cout << k << endl;
+	if (n > 0) return jump(n, k);
+	else return k;
 }
 
 int main() {
 	int n;
-	int j;
-	int counter = 0;
-	int vars = 1;
+	int k;
 	bool jl = 0;
 
 	cout << "Enter number of stair: ";
@@ -23,12 +28,12 @@ int main() {
 	cin >> jl;
 	if (jl) {
 		cout << "Enter jump leight: ";
-		cin >> j;
+		cin >> k;
 
-		cout << "Variants: " << jump(n, vars, counter, j);
+		cout << "Variants: " << jump(n, k);
 	}
 	else {
-		cout << "Variants: " << jump(n, vars, counter);
+		cout << "Variants: " << jump(n);
 	}
 
 	return 0;
